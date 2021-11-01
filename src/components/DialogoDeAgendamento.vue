@@ -1,5 +1,5 @@
 <template>
-	<v-dialog  width="400" v-model="mostrarDialogo">
+	<v-dialog width="400" v-model="mostrarDialogo">
 		<v-card>
 			<v-toolbar color="primary" dark>
 				<v-toolbar-title>
@@ -24,34 +24,46 @@
 					<v-col>
 						<v-menu
 							ref="menu"
-							v-model="calendarioAtivo"
+							v-model="menu"
 							:close-on-content-click="false"
+							:return-value.sync="date"
 							transition="scale-transition"
 							offset-y
-							min-width="290px"
+							min-width="auto"
 						>
 							<template v-slot:activator="{ on, attrs }">
 								<v-text-field
-									v-bind="{ ...attrs, ...$attrs }"
+									v-model="date"
+									label="Picker in menu"
+									prepend-icon="mdi-calendar"
+									readonly
+									v-bind="attrs"
 									v-on="on"
-									v-model="dataFormatada"
-									@blur="() => $emit('input', parseDate(dataFormatada))"
-								/>
+								></v-text-field>
 							</template>
 							<v-date-picker
-								color="primary"
-								:value="date"
-								@input="value => $emit('input', value)"
-								v-bind="$attrs['date-picker']"
+								v-model="date"
 								no-title
 								scrollable
 							>
-								<v-spacer/>
-								<v-btn text color="primary" @click="menu.save(date)">
+								<v-spacer></v-spacer>
+								<v-btn
+									text
+									color="primary"
+									@click="menu = false"
+								>
+									Cancel
+								</v-btn>
+								<v-btn
+									text
+									color="primary"
+									@click="$refs.menu.save(date)"
+								>
 									OK
 								</v-btn>
 							</v-date-picker>
 						</v-menu>
+						{{date}}
 					</v-col>
 				</v-row>
 			</v-card-text>
@@ -69,13 +81,11 @@
 
 <script>
 export default {
-	components: {
-	},
 	data() {
 		return {
-			mostrarDialogo: false,
-			calendarioAtivo: false,
-			dataFormatada: null,
+			date: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
+			menu: false,
+			mostrarDialogo: false
 		}
 	},
 	methods: {
