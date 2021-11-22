@@ -24,6 +24,7 @@
 </template>
 
 <script>
+import Axios from 'axios'
 export default {
 	data() {
 		return {
@@ -46,10 +47,16 @@ export default {
 			]
 		}
 	},
+	created(){
+		this.buscarServicos()
+	},
 	methods: {
 		mostrar(){
 			this.mostrarDialogo = true 
-		}
+		},
+		async buscarServicos(){
+			await Axios.get('/api/servicos')
+		},
 	},
 }
 </script>

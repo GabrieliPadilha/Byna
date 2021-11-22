@@ -1,4 +1,5 @@
 const { Router } = require('express')
+const ServicoModel = require('../models/servico')
 const router = Router()
 
 const servicosTest = [{
@@ -15,8 +16,8 @@ const servicosTest = [{
     },
 ]
 
-router.get('', (req, res) => {
-    res.send(servicosTest)
+router.get('', async(req, res) => {
+    res.send(await ServicoModel.find())
 })
 
 router.get('/:id', (req, res) => {

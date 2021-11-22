@@ -26,19 +26,19 @@
                 </v-col>
             </v-row>
         </v-card-text>
-        <DialogoDeAgendamento ref="abrirAgendamento"/>
+        <!-- <DialogoDeAgendamento ref="abrirAgendamento"/> -->
         <DialogoDeListaDeServicos ref="abrirServicos"/>
     </v-card>
 
 </template>
 
 <script>
-  import DialogoDeAgendamento  from '../components/DialogoDeAgendamento'
+//   import DialogoDeAgendamento  from '../components/DialogoDeAgendamento'
   import DialogoDeListaDeServicos from '../components/DialogoDeListaDeServicos'
 
   export default {
     components: {
-        DialogoDeAgendamento,
+        // DialogoDeAgendamento,
         DialogoDeListaDeServicos
     },
      methods: {
