@@ -1,11 +1,16 @@
 {
   "compilerOptions": {
+    "outDir": "./dist",
     "target": "esnext",
-    "module": "esnext",
+    "module": "es2022",
     "moduleResolution": "node",
     "importHelpers": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "preserve"
+    "jsx": "preserve",
+    "esModuleInterop": true,
+    "skipDefaultLibCheck": true,
+    "allowSyntheticDefaultImports": true,
+    "types": ["vite/client"]
   }
 }
