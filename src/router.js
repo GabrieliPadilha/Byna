@@ -6,6 +6,7 @@ import Home from './views/Home.vue'
 import Pay from './views/Pay.vue'
 import PaymentFinished from './views/PaymentFinished.vue'
 import Bills from './views/Bills.vue'
+import Calendar from './views/Calendar.vue'
 
 export const router = createRouter({
   history: createWebHistory(),
@@ -25,6 +26,10 @@ export const router = createRouter({
     {
       path: '/',
       component: Home,
+    },
+    {
+      path: '/calendar',
+      component: Calendar,
     },
   ]
 })
